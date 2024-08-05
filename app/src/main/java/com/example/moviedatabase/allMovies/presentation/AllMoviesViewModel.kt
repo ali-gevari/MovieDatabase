@@ -38,11 +38,11 @@ class AllMoviesViewModel @Inject constructor(
                     }
                 }
                 .catch { error ->
-                    val catch = error.toNetworkError().networkCallError.message
+                    val networkError = populateError(error)
                     _state.update {
-                        it.copy(error = catch)
+                        it.copy(error = networkError)
                     }
-                    sendEvent(Event.Toast(catch))
+                    sendEvent(Event.Toast(networkError))
                 }
                 .onCompletion {
                     _state.update {
@@ -62,4 +62,7 @@ class AllMoviesViewModel @Inject constructor(
             movies.copy(posterPath = IMAGE_BASE_URL + movies.posterPath)
         }
     }
+
+    private fun populateError(error: Throwable): String =
+        error.toNetworkError().networkCallError.message
 }
