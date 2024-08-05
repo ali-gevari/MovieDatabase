@@ -1,4 +1,4 @@
-package com.example.moviedatabase.allMovies.domain.entity
+package com.example.moviedatabase.util
 
 data class NetworkError(
     val networkCallError: NetworkCallError,

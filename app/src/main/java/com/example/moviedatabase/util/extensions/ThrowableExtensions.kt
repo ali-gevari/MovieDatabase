@@ -1,8 +1,8 @@
 package com.example.moviedatabase.util.extensions
 
 import coil.network.HttpException
-import com.example.moviedatabase.allMovies.domain.entity.NetworkCallError
-import com.example.moviedatabase.allMovies.domain.entity.NetworkError
+import com.example.moviedatabase.util.NetworkCallError
+import com.example.moviedatabase.util.NetworkError
 import java.io.IOException
 
 fun Throwable.toNetworkError(): NetworkError {
