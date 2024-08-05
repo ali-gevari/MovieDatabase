@@ -2,8 +2,10 @@ package com.example.moviedatabase.allMovies.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.moviedatabase.allMovies.domain.entity.Movie
 import com.example.moviedatabase.allMovies.domain.repository.AllMoviesRepository
 import com.example.moviedatabase.globalEvents.Event
+import com.example.moviedatabase.util.Constant.IMAGE_BASE_URL
 import com.example.moviedatabase.util.extensions.sendEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -31,7 +33,7 @@ class AllMoviesViewModel @Inject constructor(
             allMoviesRepository.getAllMovies()
                 .onRight { allMovies ->
                     _state.update {
-                        it.copy(allMovies = allMovies)
+                        it.copy(allMovies = populateImageUrl(allMovies))
                     }
                 }
                 .onLeft { error ->
@@ -43,6 +45,12 @@ class AllMoviesViewModel @Inject constructor(
             _state.update {
                 it.copy(isLoading = false)
             }
+        }
+    }
+
+    private fun populateImageUrl(allMovies: List<Movie>): List<Movie> {
+        return allMovies.map { movies ->
+            movies.copy(posterPath = IMAGE_BASE_URL + movies.posterPath)
         }
     }
 }
