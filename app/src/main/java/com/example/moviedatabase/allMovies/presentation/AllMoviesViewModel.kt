@@ -2,9 +2,8 @@ package com.example.moviedatabase.allMovies.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.moviedatabase.allMovies.data.mapper.toNetworkError
+import com.example.moviedatabase.util.extensions.toNetworkError
 import com.example.moviedatabase.allMovies.domain.AllMoviesInteractor
-import com.example.moviedatabase.allMovies.domain.repository.AllMoviesRepository
 import com.example.moviedatabase.globalEvents.Event
 import com.example.moviedatabase.util.extensions.sendEvent
 import dagger.hilt.android.lifecycle.HiltViewModel

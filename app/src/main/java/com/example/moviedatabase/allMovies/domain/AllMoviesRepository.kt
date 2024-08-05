@@ -1,4 +1,4 @@
-package com.example.moviedatabase.allMovies.domain.repository
+package com.example.moviedatabase.allMovies.domain
 
 import com.example.moviedatabase.allMovies.domain.entity.Movie
 import kotlinx.coroutines.flow.Flow

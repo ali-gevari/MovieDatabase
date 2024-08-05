@@ -1,8 +1,8 @@
-package com.example.moviedatabase.allMovies.data.repository
+package com.example.moviedatabase.allMovies.data
 
 import com.example.moviedatabase.allMovies.data.network.AllMoviesApi
 import com.example.moviedatabase.allMovies.domain.entity.Movie
-import com.example.moviedatabase.allMovies.domain.repository.AllMoviesRepository
+import com.example.moviedatabase.allMovies.domain.AllMoviesRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
