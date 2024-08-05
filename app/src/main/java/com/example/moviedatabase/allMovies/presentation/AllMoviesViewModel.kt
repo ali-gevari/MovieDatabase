@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.moviedatabase.allMovies.domain.repository.AllMoviesRepository
 import com.example.moviedatabase.globalEvents.Event
-import com.example.moviedatabase.globalEvents.EventDispatcher.sendEvent
+import com.example.moviedatabase.util.extensions.sendEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
