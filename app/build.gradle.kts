@@ -68,8 +68,6 @@ dependencies {
     implementation(libs.retrofit.converter)
     implementation(libs.logging.interceptor)
     implementation(libs.gson)
-    implementation(libs.arrow.core)
-    implementation(libs.arrow.coroutines)
     implementation(libs.coil)
     implementation(libs.dagger.hilt)
     implementation(libs.hilt.navigation)

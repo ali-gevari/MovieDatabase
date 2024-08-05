@@ -1,7 +1,7 @@
 package com.example.moviedatabase.di
 
-import com.example.moviedatabase.allMovies.data.repository.AllMoviesRepositoryImpl
-import com.example.moviedatabase.allMovies.domain.repository.AllMoviesRepository
+import com.example.moviedatabase.allMovies.data.AllMoviesRepositoryImpl
+import com.example.moviedatabase.allMovies.domain.AllMoviesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

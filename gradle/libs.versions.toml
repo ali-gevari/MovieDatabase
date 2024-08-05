@@ -16,8 +16,6 @@ retrofit = "2.11.0"
 retrofitConverter = "2.11.0"
 loggingInterceptor = "4.12.0"
 gson = "2.10.1"
-arrowCore = "1.2.0"
-arrowCoroutine = "1.2.0"
 coil = "2.6.0"
 daggerHilt = "2.51.1"
 hiltNavigation = "1.2.0"
@@ -45,9 +43,6 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 retrofit-converter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofitConverter" }
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
-#Arrow
-arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrowCore" }
-arrow-coroutines = { module = "io.arrow-kt:arrow-fx-coroutines", version.ref = "arrowCoroutine" }
 #Coil
 coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 #dagger hilt

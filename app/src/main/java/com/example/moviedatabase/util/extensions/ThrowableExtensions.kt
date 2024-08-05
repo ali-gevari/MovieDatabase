@@ -1,4 +1,4 @@
-package com.example.moviedatabase.allMovies.data.mapper
+package com.example.moviedatabase.util.extensions
 
 import coil.network.HttpException
 import com.example.moviedatabase.allMovies.domain.entity.NetworkCallError
