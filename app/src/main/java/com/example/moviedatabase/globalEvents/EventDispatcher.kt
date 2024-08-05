@@ -1,4 +1,4 @@
-package com.example.moviedatabase.util
+package com.example.moviedatabase.globalEvents
 
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
