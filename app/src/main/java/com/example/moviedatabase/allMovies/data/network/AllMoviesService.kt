@@ -4,6 +4,6 @@ import com.example.moviedatabase.allMovies.domain.entity.AllMovies
 import retrofit2.http.GET
 
 interface AllMoviesService {
-    @GET("movie")
+    @GET("discover/movie")
     suspend fun getAllMovies(): AllMovies
 }
