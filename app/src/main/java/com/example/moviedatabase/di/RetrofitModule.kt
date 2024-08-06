@@ -1,7 +1,6 @@
 package com.example.moviedatabase.di
 
 import com.example.moviedatabase.BuildConfig
-import com.example.moviedatabase.allMovies.data.network.AllMoviesApi
 import com.example.moviedatabase.util.Constant.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -17,7 +16,7 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-object AppModule {
+object RetrofitModule {
 
     @Provides
     fun provideLogInterceptor(): HttpLoggingInterceptor {
@@ -37,10 +36,10 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideAllMoviesApi(
+    fun provideRetrofit(
         logInterceptor: HttpLoggingInterceptor,
         headerInterceptor: Interceptor
-    ): AllMoviesApi {
+    ): Retrofit {
         val builder = OkHttpClient.Builder()
         builder.addInterceptor(logInterceptor)
         builder.addInterceptor(headerInterceptor)
@@ -49,9 +48,6 @@ object AppModule {
             .baseUrl(BASE_URL)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(AllMoviesApi::class.java)
-        return retrofitBuilder
+        return retrofitBuilder.build()
     }
-
 }

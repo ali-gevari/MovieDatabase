@@ -1,12 +1,8 @@
 package com.example.moviedatabase.compose
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -28,53 +24,45 @@ import coil.compose.AsyncImage
 import com.example.moviedatabase.ui.theme.MovieDatabaseTheme
 
 @Composable
-fun MovieCard(
+fun ShowCard(
     modifier: Modifier = Modifier,
     title: String,
     image: String
 ) {
     Card(
-        modifier = modifier
-            .width(200.dp)
-            .height(400.dp),
+        modifier = modifier.width(300.dp),
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White)
     ) {
-        Column(
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(8.dp)
         ) {
             AsyncImage(
                 model = image,
                 contentDescription = null,
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(300.dp)
+                    .size(100.dp)
                     .shadow(1.dp)
-                    .clip(RoundedCornerShape(4.dp)),
-                contentScale = ContentScale.Crop
+                    .clip(RoundedCornerShape(4.dp))
             )
-            Spacer(modifier = modifier.height(8.dp))
-            Box(
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(8.dp)
-            ) {
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier
-                        .align(Alignment.TopStart)
-                        .wrapContentSize(),
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
+                    .padding(horizontal = 16.dp)
+                    .wrapContentSize(),
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+            )
         }
     }
 }
 
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
 @Composable
-fun MovieCardPreview() {
-    MovieDatabaseTheme { MovieCard(title = "Movies Name", image = "") }
+fun ShowCardPreview() {
+    MovieDatabaseTheme { ShowCard(title = "Series Name", image = "") }
 }
