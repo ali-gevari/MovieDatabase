@@ -1,9 +1,15 @@
 package com.example.moviedatabase.allMovies.data.network
 
 import com.example.moviedatabase.allMovies.domain.entity.AllMovies
-import retrofit2.http.GET
+import javax.inject.Inject
+import retrofit2.Retrofit
 
-interface AllMoviesApi {
-    @GET("movie")
-    suspend fun getAllMovies(): AllMovies
+open class AllMoviesApi @Inject constructor(
+    retrofit: Retrofit
+) {
+    private var allMoviesService: AllMoviesService = retrofit.create(AllMoviesService::class.java)
+
+    suspend fun getAllMovies(): AllMovies {
+        return allMoviesService.getAllMovies()
+    }
 }
