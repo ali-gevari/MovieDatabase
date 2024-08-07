@@ -3,6 +3,7 @@ package com.example.moviedatabase.allShows.data
 import com.example.moviedatabase.allShows.data.network.AllShowsApi
 import com.example.moviedatabase.allShows.domain.AllShowsRepository
 import com.example.moviedatabase.allShows.domain.entity.Show
+import com.example.moviedatabase.util.extensions.updateShowImage
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -12,7 +13,9 @@ class AllShowsRepositoryImpl @Inject constructor(
 ) : AllShowsRepository {
 
     override fun getAllShows(): Flow<List<Show>> = flow {
-        val data = allShowsApi.getAllShows().allShows
+        val data = allShowsApi.getAllShows()
+            .allShows
+            .updateShowImage()
         emit(data)
     }
 }

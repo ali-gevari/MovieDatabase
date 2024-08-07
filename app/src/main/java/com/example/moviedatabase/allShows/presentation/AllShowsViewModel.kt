@@ -4,9 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.moviedatabase.util.extensions.toNetworkError
 import com.example.moviedatabase.allShows.domain.AllShowsInteractor
-import com.example.moviedatabase.allShows.domain.entity.Show
 import com.example.moviedatabase.globalEvents.Event
-import com.example.moviedatabase.util.Constant.IMAGE_BASE_URL
 import com.example.moviedatabase.util.extensions.sendEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -38,7 +36,7 @@ class AllShowsViewModel @Inject constructor(
                     }
                 }
                 .catch { error ->
-                    val networkError = populateError(error)
+                    val networkError = error.toNetworkError()
                     _state.update {
                         it.copy(error = networkError)
                     }
@@ -51,18 +49,9 @@ class AllShowsViewModel @Inject constructor(
                 }
                 .collect { allShows ->
                     _state.update {
-                        it.copy(allShows = populateImageUrl(allShows))
+                        it.copy(allShows = allShows)
                     }
                 }
         }
     }
-
-    private fun populateImageUrl(allShows: List<Show>): List<Show> {
-        return allShows.map { shows ->
-            shows.copy(posterPath = IMAGE_BASE_URL + shows.posterPath)
-        }
-    }
-
-    private fun populateError(error: Throwable): String =
-        error.toNetworkError().networkCallError.message
 }
