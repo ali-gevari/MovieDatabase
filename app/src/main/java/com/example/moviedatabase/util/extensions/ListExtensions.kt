@@ -19,6 +19,7 @@ fun List<Movie>.movieToProgram(): List<Program> {
     this.forEach { movie ->
         programs.add(
             Program(
+                id = movie.id,
                 title = movie.title,
                 image = movie.posterPath,
                 programType = ProgramType.Movie
@@ -33,6 +34,7 @@ fun List<Show>.showToProgram(): List<Program> {
     this.forEach { show ->
         programs.add(
             Program(
+                id = show.id,
                 title = show.title,
                 image = show.posterPath,
                 programType = ProgramType.Show

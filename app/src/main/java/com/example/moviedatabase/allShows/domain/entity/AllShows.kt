@@ -7,6 +7,7 @@ data class AllShows(
 )
 
 data class Show(
+    @field:SerializedName("id") val id: String,
     @field:SerializedName("original_name") val title: String,
     @field:SerializedName("poster_path") val posterPath: String
 )
