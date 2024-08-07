@@ -20,15 +20,17 @@ import com.example.moviedatabase.compose.ShowCard
 
 @Composable
 internal fun AllShowsScreen(
-    viewModel: AllShowsViewModel = hiltViewModel()
+    viewModel: AllShowsViewModel = hiltViewModel(),
+    onItemClick: (String) -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    AllShowsContent(state = state)
+    AllShowsContent(state = state, onItemClick)
 }
 
 @Composable
 fun AllShowsContent(
-    state: AllShowsViewState
+    state: AllShowsViewState,
+    onItemClick: (String) -> Unit
 ) {
     Column(
         modifier = Modifier.padding(8.dp)
@@ -48,7 +50,7 @@ fun AllShowsContent(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(state.allShows) { show ->
-                ShowCard(title = show.title, image = show.posterPath)
+                ShowCard(show = show, onClick = onItemClick)
             }
         }
     }

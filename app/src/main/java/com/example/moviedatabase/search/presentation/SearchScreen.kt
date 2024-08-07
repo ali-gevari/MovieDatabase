@@ -38,11 +38,11 @@ import com.example.moviedatabase.compose.ProgramCard
 @Composable
 internal fun SearchScreen(
     viewModel: SearchProgramsViewModel = hiltViewModel(),
-    onClick: (String) -> Unit
+    onItemClick: (String) -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val query by viewModel.query.collectAsStateWithLifecycle()
-    SearchContent(searchProgramsViewState = state, viewModel, query, onClick)
+    SearchContent(searchProgramsViewState = state, viewModel, query, onItemClick)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,7 +51,7 @@ fun SearchContent(
     searchProgramsViewState: SearchProgramsViewState,
     viewModel: SearchProgramsViewModel,
     query: String,
-    onClick: (String) -> Unit
+    onItemClick: (String) -> Unit
 ) {
 
     var active by rememberSaveable { mutableStateOf(false) }
@@ -100,7 +100,7 @@ fun SearchContent(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(searchProgramsViewState.allPrograms) { program ->
-                    ProgramCard(program = program, onClick = onClick)
+                    ProgramCard(program = program, onClick = onItemClick)
                 }
             }
         }

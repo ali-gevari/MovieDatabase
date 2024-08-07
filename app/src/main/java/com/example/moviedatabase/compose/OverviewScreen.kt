@@ -16,8 +16,8 @@ fun OverviewScreen(
 ) {
     Column {
         Spacer(Modifier.height(16.dp))
-        SearchScreen(onClick = onItemClick)
-        AllMoviesScreen()
-        AllShowsScreen()
+        SearchScreen(onItemClick = onItemClick)
+        AllMoviesScreen(onItemClick = onItemClick)
+        AllShowsScreen(onItemClick = onItemClick)
     }
 }

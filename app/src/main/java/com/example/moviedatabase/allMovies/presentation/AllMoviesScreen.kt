@@ -19,15 +19,17 @@ import androidx.compose.ui.Modifier
 
 @Composable
 internal fun AllMoviesScreen(
-    viewModel: AllMoviesViewModel = hiltViewModel()
+    viewModel: AllMoviesViewModel = hiltViewModel(),
+    onItemClick: (String) -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    AllMoviesContent(state = state)
+    AllMoviesContent(state = state, onItemClick)
 }
 
 @Composable
 fun AllMoviesContent(
-    state: AllMoviesViewState
+    state: AllMoviesViewState,
+    onItemClick: (String) -> Unit
 ) {
     Column(
         modifier = Modifier.padding(8.dp)
@@ -45,7 +47,7 @@ fun AllMoviesContent(
             contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
             items(state.allMovies) { movie ->
-                MovieCard(title = movie.title, image = movie.posterPath)
+                MovieCard(movie = movie, onClick = onItemClick)
             }
         }
     }
