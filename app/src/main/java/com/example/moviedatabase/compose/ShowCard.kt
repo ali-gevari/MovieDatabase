@@ -22,19 +22,20 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.example.moviedatabase.allShows.domain.entity.Show
+import com.example.moviedatabase.search.domain.entity.Program
+import com.example.moviedatabase.search.domain.entity.ProgramType
 import com.example.moviedatabase.ui.theme.MovieDatabaseTheme
 
 @Composable
 fun ShowCard(
     modifier: Modifier = Modifier,
-    show: Show,
+    program: Program,
     onClick: (String) -> Unit = {}
 ) {
     Card(
         modifier = modifier
             .width(300.dp)
-            .clickable { onClick(show.id) },
+            .clickable { onClick(program.id) },
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White)
@@ -44,7 +45,7 @@ fun ShowCard(
             modifier = Modifier.padding(8.dp)
         ) {
             AsyncImage(
-                model = show.posterPath,
+                model = program.image,
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
@@ -53,7 +54,7 @@ fun ShowCard(
                     .clip(RoundedCornerShape(4.dp))
             )
             Text(
-                text = show.title,
+                text = program.title,
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
@@ -68,5 +69,14 @@ fun ShowCard(
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
 @Composable
 fun ShowCardPreview() {
-    MovieDatabaseTheme { ShowCard(show = Show(title = "Title", id = "", posterPath = "")) }
+    MovieDatabaseTheme {
+        ProgramCard(
+            program = Program(
+                id = "",
+                title = "Program",
+                image = "",
+                programType = ProgramType.Show
+            )
+        )
+    }
 }

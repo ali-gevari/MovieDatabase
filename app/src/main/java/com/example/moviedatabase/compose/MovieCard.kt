@@ -26,20 +26,21 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.example.moviedatabase.allMovies.domain.entity.Movie
+import com.example.moviedatabase.search.domain.entity.Program
+import com.example.moviedatabase.search.domain.entity.ProgramType
 import com.example.moviedatabase.ui.theme.MovieDatabaseTheme
 
 @Composable
 fun MovieCard(
     modifier: Modifier = Modifier,
-    movie: Movie,
+    program: Program,
     onClick: (String) -> Unit = {}
 ) {
     Card(
         modifier = modifier
             .width(200.dp)
             .height(400.dp)
-            .clickable { onClick(movie.id) },
+            .clickable { onClick(program.id) },
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White)
@@ -48,7 +49,7 @@ fun MovieCard(
             modifier = Modifier.padding(8.dp)
         ) {
             AsyncImage(
-                model = movie.posterPath,
+                model = program.image,
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -64,7 +65,7 @@ fun MovieCard(
                     .padding(8.dp)
             ) {
                 Text(
-                    text = movie.title,
+                    text = program.title,
                     style = MaterialTheme.typography.titleMedium,
                     modifier = Modifier
                         .align(Alignment.TopStart)
@@ -79,5 +80,14 @@ fun MovieCard(
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
 @Composable
 fun MovieCardPreview() {
-    MovieDatabaseTheme { MovieCard(movie = Movie(title = "Movie", id = "", posterPath = "")) }
+    MovieDatabaseTheme {
+        ProgramCard(
+            program = Program(
+                id = "",
+                title = "Program",
+                image = "",
+                programType = ProgramType.Movie
+            )
+        )
+    }
 }
