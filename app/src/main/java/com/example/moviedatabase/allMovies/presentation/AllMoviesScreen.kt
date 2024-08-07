@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
+import com.example.moviedatabase.globalStates.ProgramsViewState
 
 @Composable
 internal fun AllMoviesScreen(
@@ -28,7 +29,7 @@ internal fun AllMoviesScreen(
 
 @Composable
 fun AllMoviesContent(
-    state: AllMoviesViewState,
+    state: ProgramsViewState,
     onItemClick: (String) -> Unit
 ) {
     Column(
@@ -46,8 +47,8 @@ fun AllMoviesContent(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
-            items(state.allMovies) { movie ->
-                MovieCard(movie = movie, onClick = onItemClick)
+            items(state.allPrograms) { program ->
+                MovieCard(program = program, onClick = onItemClick)
             }
         }
     }

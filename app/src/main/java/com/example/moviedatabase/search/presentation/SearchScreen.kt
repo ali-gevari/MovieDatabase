@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.moviedatabase.compose.ProgramCard
+import com.example.moviedatabase.globalStates.ProgramsViewState
 
 @Composable
 internal fun SearchScreen(
@@ -48,7 +49,7 @@ internal fun SearchScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchContent(
-    searchProgramsViewState: SearchProgramsViewState,
+    searchProgramsViewState: ProgramsViewState,
     viewModel: SearchProgramsViewModel,
     query: String,
     onItemClick: (String) -> Unit
