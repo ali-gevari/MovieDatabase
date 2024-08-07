@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.moviedatabase.util.extensions.toNetworkError
 import com.example.moviedatabase.globalEvents.Event
+import com.example.moviedatabase.globalStates.ProgramsViewState
 import com.example.moviedatabase.search.domain.SearchProgramsInteractor
 import com.example.moviedatabase.util.extensions.sendEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,7 +22,7 @@ class SearchProgramsViewModel @Inject constructor(
     private val searchProgramsInteractor: SearchProgramsInteractor
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(SearchProgramsViewState())
+    private val _state = MutableStateFlow(ProgramsViewState())
     val state = _state.asStateFlow()
 
     private val _query = MutableStateFlow("")

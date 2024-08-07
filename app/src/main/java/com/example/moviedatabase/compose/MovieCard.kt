@@ -1,5 +1,6 @@
 package com.example.moviedatabase.compose
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -25,18 +26,21 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.example.moviedatabase.search.domain.entity.Program
+import com.example.moviedatabase.search.domain.entity.ProgramType
 import com.example.moviedatabase.ui.theme.MovieDatabaseTheme
 
 @Composable
 fun MovieCard(
     modifier: Modifier = Modifier,
-    title: String,
-    image: String
+    program: Program,
+    onClick: (String) -> Unit = {}
 ) {
     Card(
         modifier = modifier
             .width(200.dp)
-            .height(400.dp),
+            .height(400.dp)
+            .clickable { onClick(program.id) },
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White)
@@ -45,7 +49,7 @@ fun MovieCard(
             modifier = Modifier.padding(8.dp)
         ) {
             AsyncImage(
-                model = image,
+                model = program.image,
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -61,7 +65,7 @@ fun MovieCard(
                     .padding(8.dp)
             ) {
                 Text(
-                    text = title,
+                    text = program.title,
                     style = MaterialTheme.typography.titleMedium,
                     modifier = Modifier
                         .align(Alignment.TopStart)
@@ -76,5 +80,14 @@ fun MovieCard(
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
 @Composable
 fun MovieCardPreview() {
-    MovieDatabaseTheme { MovieCard(title = "Movies Name", image = "") }
+    MovieDatabaseTheme {
+        ProgramCard(
+            program = Program(
+                id = "",
+                title = "Program",
+                image = "",
+                programType = ProgramType.Movie
+            )
+        )
+    }
 }

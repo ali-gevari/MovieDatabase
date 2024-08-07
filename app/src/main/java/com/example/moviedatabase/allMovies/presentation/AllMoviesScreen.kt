@@ -16,18 +16,21 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
+import com.example.moviedatabase.globalStates.ProgramsViewState
 
 @Composable
 internal fun AllMoviesScreen(
-    viewModel: AllMoviesViewModel = hiltViewModel()
+    viewModel: AllMoviesViewModel = hiltViewModel(),
+    onItemClick: (String) -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    AllMoviesContent(state = state)
+    AllMoviesContent(state = state, onItemClick)
 }
 
 @Composable
 fun AllMoviesContent(
-    state: AllMoviesViewState
+    state: ProgramsViewState,
+    onItemClick: (String) -> Unit
 ) {
     Column(
         modifier = Modifier.padding(8.dp)
@@ -44,8 +47,8 @@ fun AllMoviesContent(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
-            items(state.allMovies) { movie ->
-                MovieCard(title = movie.title, image = movie.posterPath)
+            items(state.allPrograms) { program ->
+                MovieCard(program = program, onClick = onItemClick)
             }
         }
     }

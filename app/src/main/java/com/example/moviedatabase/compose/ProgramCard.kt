@@ -1,5 +1,6 @@
 package com.example.moviedatabase.compose
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -29,7 +30,8 @@ import com.example.moviedatabase.ui.theme.MovieDatabaseTheme
 @Composable
 fun ProgramCard(
     modifier: Modifier = Modifier,
-    program: Program
+    program: Program,
+    onClick: (String) -> Unit = {}
 ) {
     Card(
         modifier = modifier
@@ -37,7 +39,8 @@ fun ProgramCard(
                 width = 170.dp,
                 height = 250.dp
             )
-            .padding(bottom = 16.dp),
+            .padding(bottom = 16.dp)
+            .clickable { onClick(program.id) },
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White)
     ) {
@@ -91,6 +94,7 @@ fun ProgramCardPreview() {
     MovieDatabaseTheme {
         ProgramCard(
             program = Program(
+                id = "",
                 title = "Program",
                 image = "",
                 programType = ProgramType.Movie

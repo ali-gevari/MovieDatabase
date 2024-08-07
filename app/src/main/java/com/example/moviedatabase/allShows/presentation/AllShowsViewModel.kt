@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.moviedatabase.util.extensions.toNetworkError
 import com.example.moviedatabase.allShows.domain.AllShowsInteractor
 import com.example.moviedatabase.globalEvents.Event
+import com.example.moviedatabase.globalStates.ProgramsViewState
 import com.example.moviedatabase.util.extensions.sendEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,7 +21,7 @@ import javax.inject.Inject
 class AllShowsViewModel @Inject constructor(
     private val allShowsInteractor: AllShowsInteractor
 ) : ViewModel() {
-    private val _state = MutableStateFlow(AllShowsViewState())
+    private val _state = MutableStateFlow(ProgramsViewState())
     val state = _state.asStateFlow()
 
     init {
@@ -47,9 +48,9 @@ class AllShowsViewModel @Inject constructor(
                         it.copy(isLoading = false)
                     }
                 }
-                .collect { allShows ->
+                .collect { allPrograms ->
                     _state.update {
-                        it.copy(allShows = allShows)
+                        it.copy(allPrograms = allPrograms)
                     }
                 }
         }
