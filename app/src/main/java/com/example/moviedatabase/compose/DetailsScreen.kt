@@ -5,7 +5,9 @@ import androidx.compose.runtime.remember
 
 @Composable
 fun DetailsScreen(
-    details: String? = ""
+    programId: String? = "",
+    programType: String? = ""
 ) {
-    val programId = remember(details) { details ?: "detail" }
+    val id = remember(programId) { programId ?: "Unknown ID" }
+    val type = remember(programType) { programType ?: "Unknown Type" }
 }
