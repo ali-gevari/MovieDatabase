@@ -6,7 +6,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.LaunchedEffect
@@ -16,9 +15,9 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.moviedatabase.allMovies.presentation.AllMoviesScreen
 import com.example.moviedatabase.allShows.presentation.AllShowsScreen
-import com.example.moviedatabase.compose.MoviesTopAppBar
 import com.example.moviedatabase.globalEvents.Event
 import com.example.moviedatabase.globalEvents.EventDispatcher
+import com.example.moviedatabase.search.presentation.SearchScreen
 import com.example.moviedatabase.ui.theme.MovieDatabaseTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,13 +39,12 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                 }
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    topBar = { MoviesTopAppBar(title = "Movie Database") }
-                ) { padding ->
+                Scaffold() { padding ->
                     Column(
-                        modifier = Modifier.padding(top = padding.calculateTopPadding())
+                        modifier = Modifier
+                            .padding(top = padding.calculateTopPadding())
                     ) {
+                        SearchScreen()
                         AllMoviesScreen()
                         AllShowsScreen()
                     }

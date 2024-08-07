@@ -1,10 +1,10 @@
-package com.example.moviedatabase.allShows.presentation
+package com.example.moviedatabase.search.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.moviedatabase.util.extensions.toNetworkError
-import com.example.moviedatabase.allShows.domain.AllShowsInteractor
 import com.example.moviedatabase.globalEvents.Event
+import com.example.moviedatabase.search.domain.SearchProgramsInteractor
 import com.example.moviedatabase.util.extensions.sendEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,19 +17,23 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AllShowsViewModel @Inject constructor(
-    private val allShowsInteractor: AllShowsInteractor
+class SearchProgramsViewModel @Inject constructor(
+    private val searchProgramsInteractor: SearchProgramsInteractor
 ) : ViewModel() {
-    private val _state = MutableStateFlow(AllShowsViewState())
+
+    private val _state = MutableStateFlow(SearchProgramsViewState())
     val state = _state.asStateFlow()
 
-    init {
-        getAllShows()
+    private val _query = MutableStateFlow("")
+    val query = _query.asStateFlow()
+
+    fun updateQuery(query: String) {
+        _query.value = query
     }
 
-    private fun getAllShows() {
+    fun searchMovies(query: String) {
         viewModelScope.launch {
-            allShowsInteractor()
+            searchProgramsInteractor(query)
                 .onStart {
                     _state.update {
                         it.copy(isLoading = true)
@@ -47,9 +51,9 @@ class AllShowsViewModel @Inject constructor(
                         it.copy(isLoading = false)
                     }
                 }
-                .collect { allShows ->
+                .collect { allPrograms ->
                     _state.update {
-                        it.copy(allShows = allShows)
+                        it.copy(allPrograms = allPrograms)
                     }
                 }
         }
