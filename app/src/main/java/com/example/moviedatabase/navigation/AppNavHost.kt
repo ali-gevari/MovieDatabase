@@ -19,16 +19,16 @@ fun AppNavHost(
     ) {
         composable(route = Overview.route) {
             OverviewScreen(
-                onItemClick = { details ->
-                    navController.navigateToDetails(details)
+                onItemClick = { program ->
+                    navController.navigateToDetails(program.id, program.programType.name)
                 }
             )
         }
 
         composable(route = Favourites.route) {
             AllShowsScreen(
-                onItemClick = { details ->
-                    navController.navigateToDetails(details)
+                onItemClick = { program ->
+                    navController.navigateToDetails(program.id, program.programType.name)
                 }
             )
         }
@@ -37,9 +37,11 @@ fun AppNavHost(
             route = Details.routeWithArgs,
             arguments = Details.arguments
         ) { navBackStackEntry ->
-            val details =
-                navBackStackEntry.arguments?.getString(Details.DETAILS_ARG)
-            DetailsScreen(details)
+            val programId =
+                navBackStackEntry.arguments?.getString(Details.PROGRAM_ID)
+            val programType =
+                navBackStackEntry.arguments?.getString(Details.PROGRAM_TYPE)
+            DetailsScreen(programId, programType)
         }
     }
 }

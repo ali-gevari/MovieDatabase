@@ -15,6 +15,6 @@ fun NavHostController.navigateSingleTopTo(route: String) =
         restoreState = true
     }
 
-fun NavHostController.navigateToDetails(details: String) {
-    this.navigateSingleTopTo("${Details.route}/$details")
+fun NavHostController.navigateToDetails(programId: String, programType: String) {
+    this.navigateSingleTopTo("${Details.route}/$programId/$programType")
 }
