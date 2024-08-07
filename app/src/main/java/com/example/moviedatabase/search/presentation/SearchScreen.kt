@@ -35,11 +35,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.moviedatabase.compose.ProgramCard
 import com.example.moviedatabase.globalStates.ProgramsViewState
+import com.example.moviedatabase.search.domain.entity.Program
 
 @Composable
 internal fun SearchScreen(
     viewModel: SearchProgramsViewModel = hiltViewModel(),
-    onItemClick: (String) -> Unit
+    onItemClick: (Program) -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val query by viewModel.query.collectAsStateWithLifecycle()
@@ -52,7 +53,7 @@ fun SearchContent(
     searchProgramsViewState: ProgramsViewState,
     viewModel: SearchProgramsViewModel,
     query: String,
-    onItemClick: (String) -> Unit
+    onItemClick: (Program) -> Unit
 ) {
 
     var active by rememberSaveable { mutableStateOf(false) }

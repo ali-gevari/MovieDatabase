@@ -30,12 +30,12 @@ import com.example.moviedatabase.ui.theme.MovieDatabaseTheme
 fun ShowCard(
     modifier: Modifier = Modifier,
     program: Program,
-    onClick: (String) -> Unit = {}
+    onClick: (Program) -> Unit = {}
 ) {
     Card(
         modifier = modifier
             .width(300.dp)
-            .clickable { onClick(program.id) },
+            .clickable { onClick(program) },
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White)

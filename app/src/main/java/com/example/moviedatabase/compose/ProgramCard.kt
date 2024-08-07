@@ -31,7 +31,7 @@ import com.example.moviedatabase.ui.theme.MovieDatabaseTheme
 fun ProgramCard(
     modifier: Modifier = Modifier,
     program: Program,
-    onClick: (String) -> Unit = {}
+    onClick: (Program) -> Unit = {}
 ) {
     Card(
         modifier = modifier
@@ -40,7 +40,7 @@ fun ProgramCard(
                 height = 250.dp
             )
             .padding(bottom = 16.dp)
-            .clickable { onClick(program.id) },
+            .clickable { onClick(program) },
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White)
     ) {

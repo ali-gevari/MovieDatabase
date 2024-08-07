@@ -17,11 +17,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import com.example.moviedatabase.globalStates.ProgramsViewState
+import com.example.moviedatabase.search.domain.entity.Program
 
 @Composable
 internal fun AllMoviesScreen(
     viewModel: AllMoviesViewModel = hiltViewModel(),
-    onItemClick: (String) -> Unit
+    onItemClick: (Program) -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     AllMoviesContent(state = state, onItemClick)
@@ -30,7 +31,7 @@ internal fun AllMoviesScreen(
 @Composable
 fun AllMoviesContent(
     state: ProgramsViewState,
-    onItemClick: (String) -> Unit
+    onItemClick: (Program) -> Unit
 ) {
     Column(
         modifier = Modifier.padding(8.dp)
