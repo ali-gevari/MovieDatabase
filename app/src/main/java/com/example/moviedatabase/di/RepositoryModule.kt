@@ -4,6 +4,8 @@ import com.example.moviedatabase.allMovies.data.AllMoviesRepositoryImpl
 import com.example.moviedatabase.allMovies.domain.AllMoviesRepository
 import com.example.moviedatabase.allShows.data.AllShowsRepositoryImpl
 import com.example.moviedatabase.allShows.domain.AllShowsRepository
+import com.example.moviedatabase.details.data.ProgramDetailsRepositoryImpl
+import com.example.moviedatabase.details.domain.ProgramDetailsRepository
 import com.example.moviedatabase.search.data.SearchProgramsRepositoryImpl
 import com.example.moviedatabase.search.domain.SearchProgramsRepository
 import dagger.Binds
@@ -27,4 +29,8 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindSearchProgramRepository(implements: SearchProgramsRepositoryImpl): SearchProgramsRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindProgramDetailsRepository(implements: ProgramDetailsRepositoryImpl): ProgramDetailsRepository
 }

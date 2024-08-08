@@ -8,11 +8,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.moviedatabase.allMovies.presentation.AllMoviesScreen
 import com.example.moviedatabase.allShows.presentation.AllShowsScreen
+import com.example.moviedatabase.search.domain.entity.Program
 import com.example.moviedatabase.search.presentation.SearchScreen
 
 @Composable
 fun OverviewScreen(
-    onItemClick: (String) -> Unit
+    onItemClick: (Program) -> Unit
 ) {
     Column {
         Spacer(Modifier.height(16.dp))

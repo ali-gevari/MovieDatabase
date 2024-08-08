@@ -18,11 +18,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.moviedatabase.compose.ShowCard
 import com.example.moviedatabase.globalStates.ProgramsViewState
+import com.example.moviedatabase.search.domain.entity.Program
 
 @Composable
 internal fun AllShowsScreen(
     viewModel: AllShowsViewModel = hiltViewModel(),
-    onItemClick: (String) -> Unit
+    onItemClick: (Program) -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     AllShowsContent(state = state, onItemClick)
@@ -31,7 +32,7 @@ internal fun AllShowsScreen(
 @Composable
 fun AllShowsContent(
     state: ProgramsViewState,
-    onItemClick: (String) -> Unit
+    onItemClick: (Program) -> Unit
 ) {
     Column(
         modifier = Modifier.padding(8.dp)

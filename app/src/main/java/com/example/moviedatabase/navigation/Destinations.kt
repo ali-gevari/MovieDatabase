@@ -25,10 +25,12 @@ data object Favourites : Destination {
 data object Details : Destination {
     override val icon = Icons.Filled.Home
     override val route = "details"
-    const val DETAILS_ARG = "details"
-    val routeWithArgs = "$route/{$DETAILS_ARG}"
+    const val PROGRAM_ID = "programId"
+    const val PROGRAM_TYPE = "programType"
+    val routeWithArgs = "$route/{$PROGRAM_ID}/{$PROGRAM_TYPE}"
     val arguments = listOf(
-        navArgument(DETAILS_ARG) { type = NavType.StringType }
+        navArgument(PROGRAM_ID) { type = NavType.StringType },
+        navArgument(PROGRAM_TYPE) { type = NavType.StringType }
     )
 }
 

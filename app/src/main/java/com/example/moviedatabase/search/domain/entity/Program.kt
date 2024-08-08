@@ -7,6 +7,7 @@ data class Program(
     val programType: ProgramType
 )
 
-enum class ProgramType {
-    Movie, Show
+enum class ProgramType(val type: String) {
+    Movie("Movie"),
+    Show("Show")
 }
