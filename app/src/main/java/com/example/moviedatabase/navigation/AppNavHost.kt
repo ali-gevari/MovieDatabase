@@ -5,8 +5,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.moviedatabase.allShows.presentation.AllShowsScreen
-import com.example.moviedatabase.compose.DetailsScreen
 import com.example.moviedatabase.compose.OverviewScreen
+import com.example.moviedatabase.details.presentation.ProgramDetailsScreen
 import com.example.moviedatabase.util.extensions.navigateToDetails
 
 @Composable
@@ -20,7 +20,7 @@ fun AppNavHost(
         composable(route = Overview.route) {
             OverviewScreen(
                 onItemClick = { program ->
-                    navController.navigateToDetails(program.id, program.programType.name)
+                    navController.navigateToDetails(program.id, program.programType.type)
                 }
             )
         }
@@ -28,7 +28,7 @@ fun AppNavHost(
         composable(route = Favourites.route) {
             AllShowsScreen(
                 onItemClick = { program ->
-                    navController.navigateToDetails(program.id, program.programType.name)
+                    navController.navigateToDetails(program.id, program.programType.type)
                 }
             )
         }
@@ -41,7 +41,7 @@ fun AppNavHost(
                 navBackStackEntry.arguments?.getString(Details.PROGRAM_ID)
             val programType =
                 navBackStackEntry.arguments?.getString(Details.PROGRAM_TYPE)
-            DetailsScreen(programId, programType)
+            ProgramDetailsScreen(programId, programType)
         }
     }
 }
