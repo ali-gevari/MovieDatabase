@@ -57,6 +57,7 @@ fun SearchContent(
 ) {
 
     var active by rememberSaveable { mutableStateOf(false) }
+    val onQuery: (String) -> Unit = { viewModel.searchProgram(it) }
     val keyboard = LocalSoftwareKeyboardController.current
 
     Column(
@@ -70,7 +71,7 @@ fun SearchContent(
             onQueryChange = { viewModel.updateQuery(it) },
             onSearch = {
                 keyboard?.hide()
-                viewModel.searchMovies(it)
+                onQuery(it)
                 active = false
             },
             active = false,

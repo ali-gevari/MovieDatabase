@@ -32,7 +32,7 @@ class SearchProgramsViewModel @Inject constructor(
         _query.value = query
     }
 
-    fun searchMovies(query: String) {
+    fun searchProgram(query: String) {
         viewModelScope.launch {
             searchProgramsInteractor(query)
                 .onStart {
